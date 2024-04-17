@@ -33,7 +33,7 @@ class FileCommand : CliktCommand(
                 "type": "$type",
                 "releaseTime": $releaseTime,
                 "url": "${url + fileName.replace(" ", "%20")}",
-                "hash": "${HashUtils.murmur3(path)}",
+                "sha256": "${HashUtils.sha256(path)}",
                 "size": ${Files.size(path)}
             }
         """.trimIndent()

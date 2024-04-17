@@ -1,13 +1,11 @@
 package dev.crmodders.versionsgen.utils
 
-import org.apache.commons.codec.digest.MurmurHash3
 import java.io.IOException
-import java.math.BigInteger
-import java.nio.ByteBuffer
 import java.nio.file.Files
 import java.nio.file.Path
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.*
 
 class HashUtils private constructor() {
     init {
@@ -16,15 +14,20 @@ class HashUtils private constructor() {
 
     companion object {
         @Throws(IOException::class)
-        fun murmur3(file: Path): String {
-            val longs = MurmurHash3.hash128x64(Files.readAllBytes(file))
+        fun sha256(file: Path): String {
+            val hashFunction = "SHA-256"
 
-            val bytes = ByteArray(java.lang.Long.BYTES * longs.size)
-            val byteBuffer = ByteBuffer.wrap(bytes)
+            try {
+                Files.newInputStream(file).use { inputStream ->
+                    MessageDigest.getInstance(hashFunction).apply {
+                        this.update(inputStream.readAllBytes())
 
-            longs.forEach { byteBuffer.putLong(it) }
-
-            return BigInteger(bytes).abs().toString(16)
+                        return HexFormat.of().formatHex(this.digest())
+                    }
+                }
+            } catch (e: NoSuchAlgorithmException) {
+                throw IOException("$hashFunction algorithm is not available in your JRE", e)
+            }
         }
     }
 }

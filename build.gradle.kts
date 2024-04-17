@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.crmodders"
-version = "0.0.1"
+version = "0.0.2"
 
 repositories {
     mavenCentral()
@@ -15,9 +15,6 @@ repositories {
 dependencies {
     // CLI Commands
     implementation("com.github.ajalt.clikt:clikt:4.2.2")
-
-    // Hashing
-    implementation("commons-codec:commons-codec:1.16.1")
 
     // Testing
     testImplementation(kotlin("test"))
