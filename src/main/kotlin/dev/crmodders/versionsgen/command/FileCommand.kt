@@ -14,7 +14,7 @@ class FileCommand : CliktCommand(
     help = "Generate a JSON object for a single file",
 ) {
     companion object {
-        const val DEFAULT_URL = "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/"
+        const val DEFAULT_URL = "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/versions/pre-alpha/"
     }
 
     private val path by option("--path", help = "Path to the Cosmic Reach jar")
