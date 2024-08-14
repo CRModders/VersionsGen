@@ -3,12 +3,12 @@
 A tiny little tool to generate JSON for Cosmic Reach versions. Prints JSON like this to stdout:
 ```json
 {
-    "id": "0.1.23",
+    "id": "0.1.45",
     "type": "pre_alpha",
-    "releaseTime": 1713139200,
-    "url": "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/Cosmic%20Reach-0.1.23.jar",
-    "hash": "fcc4df21e869c8014c4f12ab12b1172cc2957f9d819cc45d1517ccf7c7602bae",
-    "size": 23832099
+    "releaseTime": 1723408320,
+    "url": "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/versions/pre-alpha/Cosmic%20Reach-0.1.45.jar",
+    "sha256": "a0aec07cb36ba05ab9a74b2812cc54a5c6ba556977634f8a5d1276ad0a3dd2d4",
+    "size": 23986808
 }
 ```
 
