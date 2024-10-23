@@ -15,6 +15,6 @@ A tiny little tool to generate JSON for Cosmic Reach versions. Prints JSON like 
 ## Usage
 ```shell
 gradlew shadowJar
-java -jar build/libs/versionsgen-0.0.3-all.jar file --path <path to the cosmic reach jar>
+java -jar build/libs/versionsgen-0.1.0-all.jar file --path <path to the cosmic reach jar>
 ```
 See more in program usage
