@@ -3,18 +3,25 @@
 A tiny little tool to generate JSON for Cosmic Reach versions. Prints JSON like this to stdout:
 ```json
 {
-    "id": "0.1.45",
-    "type": "pre_alpha",
-    "releaseTime": 1723408320,
-    "url": "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/versions/pre-alpha/Cosmic%20Reach-0.1.45.jar",
-    "sha256": "a0aec07cb36ba05ab9a74b2812cc54a5c6ba556977634f8a5d1276ad0a3dd2d4",
-    "size": 23986808
+  "id": "0.3.14",
+  "type": "pre_alpha",
+  "releaseTime": 1735430400,
+  "client": {
+    "url": "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/versions/pre-alpha/0.3.14/client/Cosmic-Reach-0.3.14.jar",
+    "sha256": "70915270401bf4ada7e3f6b909eebef397a0d896ed192029ec1fecd98eed54d6",
+    "size": 53409134
+  },
+  "server": {
+    "url": "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/versions/pre-alpha/0.3.14/server/Cosmic-Reach-Server-0.3.14.jar",
+    "sha256": "0a7feeaee8277b04af6042a43dade220f8d0706542eaf76151e04bbe70bb3777",
+    "size": 13068507
+  }
 }
 ```
 
 ## Usage
 ```shell
 gradlew shadowJar
-java -jar build/libs/versionsgen-0.1.0-all.jar file --path <path to the cosmic reach jar>
+java -jar build/libs/versionsgen-0.1.0-all.jar file --type pre_alpha --version 0.3.14 --client ./Cosmic-Reach-0.3.14.jar --server ./Cosmic-Reach-Server-0.3.14.jar
 ```
 See more in program usage
