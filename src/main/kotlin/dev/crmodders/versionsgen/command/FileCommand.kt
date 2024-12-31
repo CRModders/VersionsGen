@@ -81,7 +81,7 @@ class FileCommand : CliktCommand(
             """
             {
                 "id": "$versionNumber",
-                "type": "$versionType",
+                "type": "${versionType.replace("-", "_")}",
                 "releaseTime": $releaseTime
         """.trimIndent()
         )
@@ -99,7 +99,7 @@ class FileCommand : CliktCommand(
 
     private fun buildEntrySide(builder: StringBuilder, path: Path, side: String) {
         val fileName = path.fileName.toString().replace(" ", "%20")
-        val url = "${baseUrl}versions/${formatVersionType(versionType)}/$versionNumber/$side/$fileName"
+        val url = "${baseUrl}versions/${versionType.replace("_", "-")}/$versionNumber/$side/$fileName"
 
         builder.append(
             """
@@ -110,12 +110,5 @@ class FileCommand : CliktCommand(
                     "size": ${path.fileSize()}
                 }
         """.trimIndent())
-    }
-
-    private fun formatVersionType(type: String): String {
-        val formattedType = type.replace("_", "-")
-        return if (formattedType.contains("_")) formatVersionType(formattedType) else {
-            return formattedType
-        }
     }
 }
