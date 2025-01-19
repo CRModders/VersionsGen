@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "2.1.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
@@ -9,6 +7,12 @@ base {
     group = "dev.crmodders"
     archivesName = project.name.lowercase()
     version = "0.1.1"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 repositories {
@@ -31,8 +35,4 @@ tasks.shadowJar {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
 }
