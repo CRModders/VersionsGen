@@ -27,16 +27,16 @@ class V2FileCommand : CliktCommand("v2") {
         help = "Required: version number",
     ).required()
 
-    private val versionPhase by option(
-        "-p", "--phase", "--version-phase",
-        help = "Required: version phase",
-        completionCandidates = CompletionCandidates.Fixed("pre-alpha"),
-    ).required()
-
     private val versionType by option(
         "-t", "--type", "--version-type",
         help = "Required: version type",
         completionCandidates = CompletionCandidates.Fixed("release", "snapshot"),
+    ).required()
+
+    private val versionPhase by option(
+        "-p", "--phase", "--version-phase",
+        help = "Required: version phase",
+        completionCandidates = CompletionCandidates.Fixed("pre-alpha"),
     ).required()
 
     private val client by option(
@@ -78,8 +78,8 @@ class V2FileCommand : CliktCommand("v2") {
             """
             {
                 "id": "$versionNumber",
-                "phase": "${versionPhase.replace("-", "_")}",
                 "type": "${versionType.replace("-", "_")}",
+                "phase": "${versionPhase.replace("-", "_")}",
                 "releaseTime": $releaseTime
         """.trimIndent()
         )
