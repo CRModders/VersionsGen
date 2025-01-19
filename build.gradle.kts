@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.0"
+    application
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
@@ -27,9 +28,14 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
-tasks.shadowJar {
+application {
+    mainClass = "dev.crmodders.versionsgen.MainKt"
+}
+
+// Shadow JAR automatically added this:
+tasks.jar {
     manifest {
-        attributes["Main-Class"] = "dev.crmodders.versionsgen.MainKt"
+        attributes["Main-Class"] = application.mainClass.get()
     }
 }
 
