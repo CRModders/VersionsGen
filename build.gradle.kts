@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     // CLI Commands
-    implementation("com.github.ajalt.clikt:clikt:4.2.2")
+    implementation("com.github.ajalt.clikt:clikt:5.0.2")
 
     // Testing
     testImplementation(kotlin("test"))
