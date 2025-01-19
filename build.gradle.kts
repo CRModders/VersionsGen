@@ -5,8 +5,11 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "dev.crmodders"
-version = "0.1.1"
+base {
+    group = "dev.crmodders"
+    archivesName = project.name.lowercase()
+    version = "0.1.1"
+}
 
 repositories {
     mavenCentral()
@@ -21,9 +24,6 @@ dependencies {
 }
 
 tasks.shadowJar {
-    archiveBaseName.set(project.name.lowercase())
-    archiveVersion.set(project.version.toString())
-
     manifest {
         attributes["Main-Class"] = "dev.crmodders.versionsgen.MainKt"
     }
